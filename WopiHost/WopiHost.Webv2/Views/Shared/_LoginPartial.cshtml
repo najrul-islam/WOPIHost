@@ -1,0 +1,19 @@
+﻿@using System.Security.Principal
+
+<ul class="navbar-nav navbar-right">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item user-name">
+            <span class="navbar-text text-dark">Hello @User.Identity.Name!</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Sign out</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Sign in</a>
+        </li>
+    }
+</ul>

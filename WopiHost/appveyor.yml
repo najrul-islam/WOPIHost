@@ -1,0 +1,53 @@
+image: Visual Studio 2017
+
+configuration: Release
+
+skip_commits:
+  files:
+  - '*.md'
+
+init:
+  - git config --global core.autocrlf true
+# For debugging purposes (RDP)
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  
+install:
+# - ps: .\Install-Net-Core.ps1
+ - nuget sources add -Name wopi -Source %nuget_feed%
+ - "python.exe -m pip install codecov"
+
+build:
+  verbosity: normal
+
+before_build:
+ - ps: dotnet restore
+
+test: off
+
+test_script:
+ - ps: >-
+
+    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+    
+    choco install opencover.portable -y
+
+    ForEach ($folder in (Get-ChildItem -Path .\ -Directory -Filter *.Tests)) { 
+
+    $project = Get-ChildItem -Path ($folder.FullName+"\*.csproj") | Select-Object -First 1
+    
+    $logger = ("--logger:trx;LogFileName=" + $folder.FullName + "\xunit-results.xml")
+
+    dotnet test $project.FullName $logger
+
+    $openCover = 'C:\ProgramData\chocolatey\lib\opencover.portable\tools\OpenCover.Console.exe'
+    
+    $targetArgs = '-targetargs: test ' + $project.FullName + ' ' + $folder.FullName + ' -c ' + $ENV:CONFIGURATION + ' ' + $logger
+
+    $filter = '-filter:+[Wopi*]*-[*Tests]*'
+
+    & $openCover '-target:C:\Program Files\dotnet\dotnet.exe' $targetArgs '-register:user' $filter '-oldStyle' '-mergeoutput' ('-output:' + $ENV:APPVEYOR_BUILD_FOLDER + '\coverage.xml')
+    
+    }
+
+after_test:
+  - "codecov"

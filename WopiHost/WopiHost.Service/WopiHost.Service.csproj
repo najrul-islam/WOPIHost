@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--<TargetFramework>netstandard2.0</TargetFramework>-->
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WopiHost.Data\WopiHost.Data.csproj" />
+		<ProjectReference Include="..\WopiHost.FileSystemProvider\WopiHost.FileSystemProvider.csproj" />
+		<ProjectReference Include="..\WopiHost.Utility\WopiHost.Utility.csproj" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+
+	</ItemGroup>
+
+</Project>

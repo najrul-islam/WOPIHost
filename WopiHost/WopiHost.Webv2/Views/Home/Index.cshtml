@@ -1,0 +1,26 @@
+﻿@using WopiHost.Discovery.Enumerations
+@using WopiHost.Data.Models
+@using System.IO;
+
+
+@model IEnumerable<Document>
+@{
+    ViewData["Title"] = "List of WOPI files";
+}
+
+<h2>Documents:</h2>
+<ul>
+    @foreach (var file in Model)
+    {
+    <li style="list-style: none; display: flex; flex-direction: row; align-items: center; margin-bottom: 10px;">
+
+        @*<img src="@file.IconUri" style="height: 32px;" />*@&nbsp;
+        <span>@file.DocumentName</span> &nbsp;
+        <span>@file.Extension</span> &nbsp;
+        @*<a title="View" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@file.FileId" asp-route-wopiaction="@WopiActionEnum.View" class="@(file.SupportsView ? "":"disabledIcon")">👁️</a>*@
+        <a title="View" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@file.Blob" asp-route-wopiaction="@WopiActionEnum.View" class="">👁️</a>
+        @*<a title="Edit" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@file.DocumentGuid" asp-route-wopiaction="@WopiActionEnum.Edit" class="@(file.SupportsEdit ? "":"disabledIcon")">🖊️</a>*@
+        <a title="Edit" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@file.Blob" asp-route-wopiaction="@WopiActionEnum.Edit" class="">🖊️</a>
+    </li>
+    }
+</ul>

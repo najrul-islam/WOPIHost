@@ -1,0 +1,45 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://wopidevlocal.hoxro.com",
+      //"applicationUrl": "http://wopitest.hoxro.com",
+      //"applicationUrl": "http://wopilocal-prod.hoxro.com",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://wopidevlocal.hoxro.com",
+      //"applicationUrl": "http://wopitest.hoxro.com",
+      //"applicationUrl": "http://wopilocal-prod.hoxro.com",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS (Development)": {
+      "commandName": "IIS",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS (StagingLocal)": {
+      "commandName": "IIS",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "StagingLocal"
+      }
+    },
+    "IIS (ProductionLocal)": {
+      "commandName": "IIS",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "ProductionLocal"
+      }
+    },
+    "WopiHost": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "http://wopidevlocal.hoxro.com",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

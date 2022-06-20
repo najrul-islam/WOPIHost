@@ -1,0 +1,9 @@
+CREATE TABLE "User" (
+	"UserId"	INTEGER NOT NULL,
+	"UserName"	TEXT,
+	"UserFullName"	TEXT,
+	"Email"	TEXT,
+	"Password"	TEXT,
+	"CreatedDate"	TEXT,
+	PRIMARY KEY("UserId" AUTOINCREMENT)
+);

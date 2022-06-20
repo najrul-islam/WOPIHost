@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Description>WopiHost.Abstractions Class Library</Description>
+		<Authors>Hoxro</Authors>
+		<!--<TargetFramework>netstandard2.0</TargetFramework>-->
+		<TargetFramework>net5.0</TargetFramework>
+		<AssemblyName>WopiHost.Abstractions</AssemblyName>
+		<PackageId>WopiHost.Abstractions</PackageId>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.0.1" />-->
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.2" />
+		<PackageReference Include="System.Security.Claims" Version="4.3.0" />
+		<!--<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.5" />-->
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+	</ItemGroup>
+
+	
+
+</Project>

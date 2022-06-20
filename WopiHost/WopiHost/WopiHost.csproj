@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<!--<TargetFrameworks>netcoreapp2.2;net461</TargetFrameworks>-->
+		<TargetFramework>net5.0</TargetFramework>
+		<AssemblyName>WopiHost</AssemblyName>
+		<OutputType>Exe</OutputType>
+		<!--<PackageId>WopiHost</PackageId>-->
+		<!--<AspNetCoreHostingModel Condition="'$(Configuration)' == 'Release'">InProcess</AspNetCoreHostingModel>-->
+		<!--<UserSecretsId>aspnet5-WopiHost-20150905035313</UserSecretsId>-->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Remove="web.config" />
+		<Content Remove="wwwroot\wopi-docs\test.wopitest" />
+		<Content Remove="wwwroot\wopi-docs\testdocx.wopitest" />
+		<Content Remove="wwwroot\wopi-docs\wopitest.wopitest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WopiHost.Data\WopiHost.Data.csproj" />
+		<ProjectReference Include="..\WopiHost.FileSystemProvider\WopiHost.FileSystemProvider.csproj" />
+		<ProjectReference Include="..\WopiHost.Core\WopiHost.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.3.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
+		<!--<PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />-->
+		<PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.0.64">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	
+
+	<ItemGroup>
+		<Folder Include="wwwroot\LiteDb\" />
+		<Folder Include="wwwroot\log\" />
+		<Folder Include="wwwroot\other-docs\" />
+		<Folder Include="wwwroot\wopi-docs\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="wwwroot\BlankTemplate\content.docx">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Update="wwwroot\BlankTemplate\template.docx">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+
+		<Content Update="wwwroot\wopi-docs\*.*" CopyToPublishDirectory="Never" />
+		<Content Update="wwwroot\other-docs\*.*" CopyToPublishDirectory="Never" />
+		<Content Update="wwwroot\LiteDb\*.*" CopyToPublishDirectory="Never" />
+
+		<!--Ignore Existing file ToPublishDirectory-->
+		<Content Update="appsettings.json" CopyToPublishDirectory="Never" />
+		<Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" />
+		<Content Update="appsettings.StagingLocal.json" CopyToPublishDirectory="Never" />
+		<Content Update="appsettings.ProductionLocal.json" CopyToPublishDirectory="Never" />
+
+		<!--<Content Update="wwwroot\LiteDb\**" CopyToPublishDirectory="Never" />
+		<Content Update="wwwroot\wopi-docs\**" CopyToPublishDirectory="Never" />
+		<Content Update="wwwroot\other-docs\**" CopyToPublishDirectory="Never" />
+		<Content Update="wwwroot\log\**" CopyToPublishDirectory="Never" />-->
+
+
+	</ItemGroup>
+
+	<!--During VS Publish-->
+	<!--<Target Name="CreateFolderDuringCliPublish" AfterTargets="AfterPublish">
+		<MakeDir Directories="$(PublishDir)\wwwroot\LiteDb" Condition="!Exists('$(PublishDir)\wwwroot\LiteDb')" />
+		<MakeDir Directories="$(PublishDir)\wwwroot\wopi-docs" Condition="!Exists('$(PublishDir)\wwwroot\wopi-docs')" />
+		<MakeDir Directories="$(PublishDir)\wwwroot\other-docs" Condition="!Exists('$(PublishDir)\wwwroot\other-docs')" />
+	</Target>-->
+	
+	<!--During VS Publish-->
+	<!--<Target Name="CreateFolderDuringCliPublish" AfterTargets="WebFileSystemPublish">
+		<MakeDir Directories="$(PublishDir)\wwwroot\LiteDb" Condition="!Exists('$(PublishDir)\wwwroot\LiteDb')" />
+		<MakeDir Directories="$(PublishDir)\wwwroot\wopi-docs" Condition="!Exists('$(PublishDir)\wwwroot\wopi-docs')" />
+		<MakeDir Directories="$(PublishDir)\wwwroot\other-docs" Condition="!Exists('$(PublishDir)\wwwroot\other-docs')" />
+	</Target>-->
+
+	<!--During Folder Publish-->
+	<!--<Target Name="CreateFolderDuringVSPublish" AfterTargets="FileSystemPublish">
+		<MakeDir Directories="$(PublishUrl)\wwwroot\LiteDb" Condition="!Exists('$(PublishUrl)\wwwroot\LiteDb')" />
+		<MakeDir Directories="$(PublishUrl)\wwwroot\wopi-docs" Condition="!Exists('$(PublishUrl)\wwwroot\wopi-docs')" />
+		<MakeDir Directories="$(PublishUrl)\wwwroot\other-docs" Condition="!Exists('$(PublishUrl)\wwwroot\other-docs')" />
+	</Target>-->
+
+</Project>

@@ -1,0 +1,44 @@
+﻿footer {
+    position: fixed;
+    bottom: 0px;
+    margin: 0px;
+}
+
+nav {
+    box-shadow: 0 1px 2px rgba(99, 114, 130, 0.06), 0 3px 6px rgba(27, 39, 51, 0.08);
+}
+
+    nav ul {
+        padding-bottom: 8px;
+        padding-top: 8px;
+        margin: 0;
+    }
+
+    nav li {
+        display: inline;
+        padding: 16px;
+    }
+
+.main-nav {
+    display: flex;
+}
+
+.navbar-nav.navbar-right {
+    position: absolute;
+    right: 0px !important;
+}
+nav-item.user-name {
+    color: #a52a2a;
+}
+.text-danger{
+    color: red;
+}
+
+.disabledIcon {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+}
